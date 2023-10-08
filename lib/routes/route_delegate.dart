@@ -83,11 +83,13 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
       key: navigatorKey,
       pages: _stack,
       onPopPage: (route, result) {
-        if (!route.didPop(result)) return false;
         pathName = null;
-        // isError = false;
         notifyListeners();
-        return true;
+        if (route.didPop(result)) {
+          return false;
+        } else {
+          return true;
+        }
       },
     );
   }
@@ -101,9 +103,15 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
 
     pathName = configuration.pathName;
 
+    print("PATHHHHHHHH:::::::::$pathName");
+
     if (configuration.isSecondaryPath) {
+      print("PATHHHHHHHH:::::::::$pathName");
       if (pathName != null) {
         pathName = previousPath + "/" + pathName!;
+      } else {
+        pathName = configuration.pathName?.split("/").removeLast();
+        isError = false;
       }
     } else if (configuration.isOtherPage) {
       if (configuration.pathName != null) {
