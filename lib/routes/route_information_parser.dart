@@ -4,9 +4,9 @@ import 'package:flutter_web_navigation/core.dart';
 /// parseRouteInformation will convert the given route information into parsed data to pass to RouterDelegate.
 class RoutesInformationParser extends RouteInformationParser<RoutePath> {
   @override
-  Future<RoutePath> parseRouteInformation(
-      RouteInformation routeInformation) async {
+  Future<RoutePath> parseRouteInformation(RouteInformation routeInformation) async {
     // converting the url into custom class T (RoutePath)
+    // final uri = Uri.parse('/home');
     final uri = Uri.parse(routeInformation.location!);
 
     if (uri.pathSegments.isEmpty) {
@@ -15,8 +15,7 @@ class RoutesInformationParser extends RouteInformationParser<RoutePath> {
 
     /// For query params- pass the complete path
     if (uri.queryParameters.isNotEmpty) {
-      return RoutePath.otherPage(
-          routeInformation.location!.replaceFirst("/", ""));
+      return RoutePath.otherPage(routeInformation.location!.replaceFirst("/", ""));
     }
 
     if (uri.pathSegments.length == 1) {
@@ -24,12 +23,10 @@ class RoutesInformationParser extends RouteInformationParser<RoutePath> {
 
       return RoutePath.otherPage(pathName);
     } else if (uri.pathSegments.length == 2) {
-      final complexPath = uri.pathSegments.elementAt(0).toString() +
-          "/" +
-          uri.pathSegments.elementAt(1).toString();
+      final complexPath = uri.pathSegments.elementAt(0).toString() + "/" + uri.pathSegments.elementAt(1).toString();
       return RoutePath.otherPage(complexPath.toString());
     } else {
-      return RoutePath.otherPage(uri.pathSegments.toString());
+      return RoutePath.otherPage(uri.toString());
     }
   }
 
