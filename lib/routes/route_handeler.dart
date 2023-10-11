@@ -42,31 +42,17 @@ class RouteHandeler {
       final uri = Uri.parse(routeName);
 
       if (uri.pathSegments.isNotEmpty) {
-        print("URI!!!!::::::::::$uri");
+        /// Getting route data for specified pathName
+        routeData = RouteData.values
+            .firstWhere((element) => element.name == uri.pathSegments.last, orElse: () => RouteData.notFound);
 
-        String newPath = uri.path;
-
-        if (uri.pathSegments.length > 1) {
-          List pathList = uri.pathSegments.toList();
-          pathList.removeLast();
-
-          for (int i = 0; i < pathList.length; i++) {
-            if (i == 0) {
-              newPath = pathList[i];
-            } else {
-              newPath = newPath + "/" + pathList[i];
-            }
-          }
+        if (routeData == RouteData.notFound && (uri.pathSegments.length > 1)) {
+          routeData = RouteData.values.firstWhere(
+              (element) => element.name == uri.pathSegments[(uri.pathSegments.length - 2)],
+              orElse: () => RouteData.notFound);
         }
 
-        print("URI!222!::::::::::$uri");
-
-        /// Getting first endpoint
-        final pathName = newPath;
-
-        /// Getting route data for specified pathName
-        routeData =
-            RouteData.values.firstWhere((element) => element.name == pathName, orElse: () => RouteData.notFound);
+        print("ROUTEDATA::::::::::::::::::::::::$routeData");
 
         if (routeData != RouteData.notFound) {
           switch (routeData) {
@@ -91,9 +77,7 @@ class RouteHandeler {
               );
 
             case RouteData.trip:
-              return TripHome(
-                routeName: routeName,
-              );
+              return TripHome(routeName: routeName);
             case RouteData.trip1:
               return Trip1(routeName: routeName);
             case RouteData.trip2:

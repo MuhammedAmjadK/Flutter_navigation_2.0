@@ -45,7 +45,7 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
             routeName: pathName ?? RouteData.home.name,
           ),
         ),
-        if ((pathName ?? "").endsWith("trip"))
+        if ((pathName ?? "").contains("trip"))
           MaterialPage(
             key: const ValueKey('trip'),
             child: TripScreen(
@@ -72,6 +72,7 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
 
   @override
   Widget build(BuildContext context) {
+    print("PATHNAMEBUILD::::::::::::$pathName");
     if (isLoggedIn == true) {
       _stack = _appStack;
     } else if ((isLoggedIn == false)) {
@@ -105,11 +106,27 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
 
     pathName = configuration.pathName;
 
-    print("PATHHHHHHHH:::::::::$pathName");
-
     if (configuration.isSecondaryPath) {
-      print("PATHHHHHHHH:::::::::$pathName");
-      if (pathName != null) {
+      if (RouteData.values.any((element) {
+        return element.name == pathName;
+      })) {
+        String removedPath = previousPath;
+
+        if (previousPath.split("/").length > 1) {
+          List pathList = previousPath.split("/");
+          pathList.removeLast();
+
+          for (int i = 0; i < pathList.length; i++) {
+            if (i == 0) {
+              removedPath = pathList[i];
+            } else {
+              removedPath = removedPath + "/" + pathList[i];
+            }
+          }
+        }
+
+        pathName = removedPath + "/" + pathName!;
+      } else if (pathName != null) {
         pathName = previousPath + "/" + pathName!;
       } else {
         pathName = configuration.pathName?.split("/").removeLast();
