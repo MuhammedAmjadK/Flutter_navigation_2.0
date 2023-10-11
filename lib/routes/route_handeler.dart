@@ -47,12 +47,9 @@ class RouteHandeler {
             .firstWhere((element) => element.name == uri.pathSegments.last, orElse: () => RouteData.notFound);
 
         if (routeData == RouteData.notFound && (uri.pathSegments.length > 1)) {
-          routeData = RouteData.values.firstWhere(
-              (element) => element.name == uri.pathSegments[(uri.pathSegments.length - 2)],
-              orElse: () => RouteData.notFound);
+          routeData = RouteData.values
+              .firstWhere((element) => element.name == uri.pathSegments.first, orElse: () => RouteData.notFound);
         }
-
-        print("ROUTEDATA::::::::::::::::::::::::$routeData");
 
         if (routeData != RouteData.notFound) {
           switch (routeData) {

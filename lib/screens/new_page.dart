@@ -29,6 +29,7 @@ class _MainScreenState extends State<TripScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Trip Page'),
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
