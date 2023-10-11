@@ -36,8 +36,6 @@ class RouteHandeler {
   Widget getRouteWidget(String? routeName) {
     RouteData routeData;
 
-    print("ROUTENAME:::::$routeName");
-
     if (routeName != null) {
       final uri = Uri.parse(routeName);
 
@@ -50,8 +48,6 @@ class RouteHandeler {
           routeData = RouteData.values
               .firstWhere((element) => element.name == uri.pathSegments.first, orElse: () => RouteData.notFound);
         }
-
-        print("ROUTEDATTAAAAAAAAAA:$routeData");
 
         if (routeData != RouteData.notFound) {
           switch (routeData) {
