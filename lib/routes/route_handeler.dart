@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_navigation/screens/home_screen.dart';
 import 'package:flutter_web_navigation/screens/more.dart';
+import 'package:flutter_web_navigation/screens/new_page.dart';
 import 'package:flutter_web_navigation/screens/profile_screen.dart';
 import 'package:flutter_web_navigation/screens/settings_screen.dart';
 import 'package:flutter_web_navigation/screens/unknown.dart';
@@ -16,7 +17,11 @@ enum RouteData {
   login,
   home,
   more,
-  settings
+  settings,
+  trip,
+  trip1,
+  trip2,
+  trip3,
 }
 
 /// Class to handle route path related informations
@@ -31,17 +36,37 @@ class RouteHandeler {
   Widget getRouteWidget(String? routeName) {
     RouteData routeData;
 
+    print("ROUTENAME:::::$routeName");
+
     if (routeName != null) {
       final uri = Uri.parse(routeName);
 
       if (uri.pathSegments.isNotEmpty) {
+        print("URI!!!!::::::::::$uri");
+
+        String newPath = uri.path;
+
+        if (uri.pathSegments.length > 1) {
+          List pathList = uri.pathSegments.toList();
+          pathList.removeLast();
+
+          for (int i = 0; i < pathList.length; i++) {
+            if (i == 0) {
+              newPath = pathList[i];
+            } else {
+              newPath = newPath + "/" + pathList[i];
+            }
+          }
+        }
+
+        print("URI!222!::::::::::$uri");
+
         /// Getting first endpoint
-        final pathName = uri.pathSegments.elementAt(0).toString();
+        final pathName = newPath;
 
         /// Getting route data for specified pathName
-        routeData = RouteData.values.firstWhere(
-            (element) => element.name == pathName,
-            orElse: () => RouteData.notFound);
+        routeData =
+            RouteData.values.firstWhere((element) => element.name == pathName, orElse: () => RouteData.notFound);
 
         if (routeData != RouteData.notFound) {
           switch (routeData) {
@@ -64,6 +89,17 @@ class RouteHandeler {
               return More(
                 routeName: routeName,
               );
+
+            case RouteData.trip:
+              return TripHome(
+                routeName: routeName,
+              );
+            case RouteData.trip1:
+              return Trip1(routeName: routeName);
+            case RouteData.trip2:
+              return Trip2(routeName: routeName);
+            case RouteData.trip3:
+              return Trip3(routeName: routeName);
 
             default:
               return Home(

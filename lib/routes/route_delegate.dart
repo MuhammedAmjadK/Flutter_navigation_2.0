@@ -45,10 +45,12 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
             routeName: pathName ?? RouteData.home.name,
           ),
         ),
-        if ((pathName ?? "").endsWith("newPage"))
-          const MaterialPage(
-            key: ValueKey('newPage'),
-            child: NewPage(),
+        if ((pathName ?? "").endsWith("trip"))
+          MaterialPage(
+            key: const ValueKey('trip'),
+            child: TripScreen(
+              routeName: pathName ?? RouteData.trip.name,
+            ),
           )
       ];
 

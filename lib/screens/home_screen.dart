@@ -44,12 +44,6 @@ class HomeTab extends StatelessWidget {
         children: [
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("newPage"));
-              },
-              child: const Text("newPage")),
-          const SizedBox(height: 20),
-          ElevatedButton(
-              onPressed: () {
                 AppRouterDelegate().setPathName(RoutePath.secondary("tab1"));
               },
               child: const Text("Tab 1")),
@@ -83,12 +77,6 @@ class Tab1 extends StatelessWidget {
         children: [
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("newPage"));
-              },
-              child: const Text("newPage")),
-          const SizedBox(height: 20),
-          ElevatedButton(
-              onPressed: () {
                 AppRouterDelegate().setPathName(RoutePath.secondary("detail"));
               },
               child: const Text("detail Tab")),
@@ -114,12 +102,6 @@ class Tab2 extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-              onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("newPage"));
-              },
-              child: const Text("newPage")),
-          const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () {
                 AppRouterDelegate().setPathName(RoutePath.secondary("detail"));
