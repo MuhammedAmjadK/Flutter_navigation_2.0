@@ -32,6 +32,10 @@ class RoutesInformationParser extends RouteInformationParser<RoutePath> {
 
   @override
   RouteInformation restoreRouteInformation(RoutePath configuration) {
+    String? path = configuration.pathName;
+    if (configuration.pathName?.startsWith("/") ?? false) {
+      path = path?.substring(1);
+    }
     if (configuration.isUnknown) {
       return const RouteInformation(location: '/error');
     }
@@ -39,7 +43,7 @@ class RoutesInformationParser extends RouteInformationParser<RoutePath> {
       return const RouteInformation(location: '/');
     }
     if (configuration.isOtherPage) {
-      return RouteInformation(location: '${configuration.pathName}');
+      return RouteInformation(location: '/$path');
     }
 
     return const RouteInformation(location: null);
