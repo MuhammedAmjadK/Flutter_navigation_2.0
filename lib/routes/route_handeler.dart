@@ -51,6 +51,8 @@ class RouteHandeler {
               .firstWhere((element) => element.name == uri.pathSegments.first, orElse: () => RouteData.notFound);
         }
 
+        print("ROUTEDATTAAAAAAAAAA:$routeData");
+
         if (routeData != RouteData.notFound) {
           switch (routeData) {
             case RouteData.home:

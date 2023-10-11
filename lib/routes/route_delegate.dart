@@ -127,6 +127,14 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
 
         pathName = removedPath + "/" + pathName!;
       } else if (pathName != null) {
+        // int index =
+        //     previousPath.split("/").indexWhere((element) => RouteData.values.any((element) => element.name == element));
+
+        // print("INDEXXXXXXX$index");
+
+        // if (RouteData.values.any((element) => element.name == previousPath.split("/").last)) {
+        //   pathName = previousPath + "/" + pathName!;
+        // } else {}
         pathName = previousPath + "/" + pathName!;
       } else {
         pathName = configuration.pathName?.split("/").removeLast();
