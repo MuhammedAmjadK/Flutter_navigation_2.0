@@ -72,7 +72,6 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
 
   @override
   Widget build(BuildContext context) {
-    print("PATHNAMEBUILD::::::::::::$pathName");
     if (isLoggedIn == true) {
       _stack = _appStack;
     } else if ((isLoggedIn == false)) {
@@ -120,7 +119,9 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
             if (i == 0) {
               removedPath = pathList[i];
             } else {
-              removedPath = removedPath + "/" + pathList[i];
+              if (RouteData.values.any((element) => element.name == pathList[i])) {
+                removedPath = removedPath + "/" + pathList[i];
+              }
             }
           }
         }
