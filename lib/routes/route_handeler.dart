@@ -52,9 +52,7 @@ class RouteHandeler {
         if (routeData != RouteData.notFound) {
           switch (routeData) {
             case RouteData.home:
-              return Home(
-                routeName: routeName, id: 20,
-              );
+              return Home(routeName: routeName);
 
             case RouteData.profile:
               return Profile(
@@ -72,7 +70,9 @@ class RouteHandeler {
               );
 
             case RouteData.trip_start:
-              return TripHome(routeName: routeName,id:21,);
+              return TripHome(
+                routeName: routeName,
+              );
             case RouteData.trip_end:
               return Trip1(routeName: routeName);
             case RouteData.trip_on:
@@ -81,17 +81,13 @@ class RouteHandeler {
               return Trip3(routeName: routeName);
 
             default:
-              return Home(
-                routeName: routeName, id: 23,
-              );
+              return Home(routeName: routeName);
           }
         } else {
           return const UnknownRoute();
         }
       } else {
-        return Home(
-          routeName: routeName, id: 24,
-        );
+        return Home(routeName: routeName);
       }
     } else {
       return const UnknownRoute();

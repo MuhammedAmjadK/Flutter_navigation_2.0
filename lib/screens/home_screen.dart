@@ -4,41 +4,43 @@ import '../core.dart';
 
 class Home extends StatelessWidget {
   final String routeName;
-  final int id;
 
   const Home({
     Key? key,
-    required this.routeName, required this.id,
+    required this.routeName,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return getTab(getRouteParams(routeName).last,id);
+    return getTab(getRouteParams(routeName).last);
   }
 }
 
-Widget getTab(String routeName,int id) {
+Widget getTab(String routeName) {
   switch (routeName) {
     case "home":
-      return const HomeTab(id:2);
+      return HomeTab();
     case "create":
       return const Create();
-    case "id":
-      return const View();
+    // case "$id":
+    //   return const View();
     case "edit":
       return const Edit();
     case "detail":
       return const DetailTab();
     default:
-      return const HomeTab(id:);
+      return View(id: routeName);
   }
 }
 
-
-
 class HomeTab extends StatelessWidget {
-  const HomeTab({Key? key, required this.id}) : super(key: key);
-final int id;
+  const HomeTab({
+    Key? key,
+  }) : super(key: key);
+
+  final String id1 = "21";
+  final String id2 = "22";
+  final String id3 = "23";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,9 +57,21 @@ final int id;
           const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("menu/${id}"));
+                AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id1"));
               },
-              child: const Text("View")),
+              child: Text("View $id1")),
+          const SizedBox(height: 20),
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id2"));
+              },
+              child: Text("View $id2")),
+          const SizedBox(height: 20),
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id3"));
+              },
+              child: Text("View $id3")),
           const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () {
@@ -83,7 +97,7 @@ class Create extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       color: Colors.red,
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // ElevatedButton(
@@ -91,10 +105,10 @@ class Create extends StatelessWidget {
           //       AppRouterDelegate().setPathName(RoutePath.secondary("create"));
           //     },
           //     child: const Text("create")),
-          const SizedBox(height: 20),
-          const Text(
+          SizedBox(height: 20),
+          Text(
             "create",
-            style: TextStyle(color: Colors.white, fontSize:40),
+            style: TextStyle(color: Colors.white, fontSize: 40),
           ),
         ],
       ),
@@ -103,7 +117,9 @@ class Create extends StatelessWidget {
 }
 
 class View extends StatelessWidget {
-  const View({Key? key}) : super(key: key);
+  const View({Key? key, required this.id}) : super(key: key);
+
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -119,9 +135,9 @@ class View extends StatelessWidget {
           //     },
           //     child: const Text("view")),
           const SizedBox(height: 20),
-          const Text(
-            "view",
-            style: TextStyle(color: Colors.white, fontSize:40),
+          Text(
+            id,
+            style: const TextStyle(color: Colors.white, fontSize: 40),
           ),
         ],
       ),
@@ -137,7 +153,7 @@ class Edit extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       color: Colors.yellow,
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // ElevatedButton(
@@ -145,17 +161,16 @@ class Edit extends StatelessWidget {
           //       // AppRouterDelegate().setPathName(RoutePath.secondary("edit"));
           //     },
           //     child: const Text("Edit")),
-          const SizedBox(height: 20),
-          const Text(
+          SizedBox(height: 20),
+          Text(
             "edit",
-            style: TextStyle(color: Colors.black, fontSize:40),
+            style: TextStyle(color: Colors.black, fontSize: 40),
           ),
         ],
       ),
     );
   }
 }
-
 
 class DetailTab extends StatelessWidget {
   const DetailTab({Key? key}) : super(key: key);

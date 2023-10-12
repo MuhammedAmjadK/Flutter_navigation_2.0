@@ -90,15 +90,11 @@ class _MainScreenState extends State<TripScreen> {
 
 class TripHome extends StatelessWidget {
   final String routeName;
-final int id;
-  const TripHome({
-    Key? key,
-    required this.routeName, required this.id,
-  }) : super(key: key);
+  const TripHome({Key? key, required this.routeName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return getTab(getRouteParams(routeName).last,id);
+    return getTab(getRouteParams(routeName).last);
   }
 }
 
