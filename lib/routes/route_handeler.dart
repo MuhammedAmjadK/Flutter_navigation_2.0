@@ -6,6 +6,8 @@ import 'package:flutter_web_navigation/screens/profile_screen.dart';
 import 'package:flutter_web_navigation/screens/settings_screen.dart';
 import 'package:flutter_web_navigation/screens/unknown.dart';
 
+import '../screens/settings.dart';
+
 enum RouteData {
   /// For routes for which we want to show unkown page that are not being parsed
   unkownRoute,
@@ -22,6 +24,8 @@ enum RouteData {
   trip_end,
   trip_on,
   trips,
+  price,
+  category,
 }
 
 /// Class to handle route path related informations
@@ -79,6 +83,11 @@ class RouteHandeler {
               return Trip2(routeName: routeName);
             case RouteData.trips:
               return Trip3(routeName: routeName);
+            case RouteData.price:
+              return Price(routeName: routeName);
+
+            case RouteData.category:
+              return Category(routeName: routeName);
 
             default:
               return Home(routeName: routeName);

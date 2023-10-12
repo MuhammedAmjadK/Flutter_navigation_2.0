@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
 Widget getTab(String routeName) {
   switch (routeName) {
     case "home":
-      return HomeTab();
+      return const HomeTab();
     case "create":
       return const Create();
     // case "$id":

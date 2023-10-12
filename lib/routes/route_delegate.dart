@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_navigation/screens/new_page.dart';
+import 'package:flutter_web_navigation/screens/settings.dart';
 import 'package:flutter_web_navigation/services/hive_storage_service.dart';
 import '../core.dart';
 
@@ -50,6 +51,13 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
             key: const ValueKey('trip'),
             child: TripScreen(
               routeName: pathName ?? RouteData.trip_start.name,
+            ),
+          ),
+        if ((pathName ?? "").contains("settings"))
+          MaterialPage(
+            key: const ValueKey('settings'),
+            child: SettingsScreen(
+              routeName: pathName ?? RouteData.settings.name,
             ),
           )
       ];
@@ -128,14 +136,6 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
 
         pathName = removedPath + "/" + pathName!;
       } else if (pathName != null) {
-        // int index =
-        //     previousPath.split("/").indexWhere((element) => RouteData.values.any((element) => element.name == element));
-
-        // print("INDEXXXXXXX$index");
-
-        // if (RouteData.values.any((element) => element.name == previousPath.split("/").last)) {
-        //   pathName = previousPath + "/" + pathName!;
-        // } else {}
         pathName = previousPath + "/" + pathName!;
       } else {
         pathName = configuration.pathName?.split("/").removeLast();

@@ -21,3 +21,8 @@ List<SubNavigationRoutes> tripRouteList = [
   SubNavigationRoutes(title: "trip_on", icon: Icons.directions_bus_sharp, route: RouteData.trip_on),
   SubNavigationRoutes(title: "trips", icon: Icons.directions_bus_sharp, route: RouteData.trips),
 ];
+
+List<SubNavigationRoutes> settingsRouteList = [
+  SubNavigationRoutes(title: "price", icon: Icons.directions_bus_sharp, route: RouteData.price),
+  SubNavigationRoutes(title: "category", icon: Icons.directions_bus_sharp, route: RouteData.category),
+];
