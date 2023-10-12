@@ -90,32 +90,32 @@ class _MainScreenState extends State<TripScreen> {
 
 class TripHome extends StatelessWidget {
   final String routeName;
-
+final int id;
   const TripHome({
     Key? key,
-    required this.routeName,
+    required this.routeName, required this.id,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return getTab(getRouteParams(routeName).last);
+    return getTab(getRouteParams(routeName).last,id);
   }
 }
 
-Widget getTab(String routeName) {
-  switch (routeName) {
-    case "trip":
-      return const TripTab();
-    case "tab1":
-      return const Tab1();
-    case "tab2":
-      return const Tab2();
-    case "detail":
-      return const DetailTab();
-    default:
-      return const TripTab();
-  }
-}
+// Widget getTab(String routeName) {
+//   switch (routeName) {
+//     case "trip":
+//       return const TripTab();
+//     case "tab1":
+//       return const Tab1();
+//     case "tab2":
+//       return const Tab2();
+//     case "detail":
+//       return const DetailTab();
+//     default:
+//       return const TripTab();
+//   }
+// }
 
 class TripTab extends StatelessWidget {
   const TripTab({Key? key}) : super(key: key);
@@ -162,7 +162,7 @@ class Trip1 extends StatelessWidget {
     return Center(
       child: Text(
         getRouteParams(routeName).length > 1
-            ? "Trip1 Screen with param ${getRouteParams(routeName)[1]}"
+            ? "Trip_end Screen with param ${getRouteParams(routeName)[1]}"
             : "Trip1 Screen",
         style: const TextStyle(color: Colors.blue, fontSize: 16),
       ),
@@ -182,8 +182,8 @@ class Trip2 extends StatelessWidget {
     return Center(
       child: Text(
         getRouteParams(routeName).length > 1
-            ? "Trip2 Screen with param ${getRouteParams(routeName)[1]}"
-            : "Trip2 Screen",
+            ? "Trip_on Screen with param ${getRouteParams(routeName)[1]}"
+            : "Trip Screen",
         style: const TextStyle(color: Colors.blue, fontSize: 16),
       ),
     );
@@ -202,7 +202,7 @@ class Trip3 extends StatelessWidget {
     return Center(
       child: Text(
         getRouteParams(routeName).length > 1
-            ? "Trip3 Screen with param ${getRouteParams(routeName)[1]}"
+            ? "Trips Screen with param ${getRouteParams(routeName)[1]}"
             : "Trip3 Screen",
         style: const TextStyle(color: Colors.blue, fontSize: 16),
       ),

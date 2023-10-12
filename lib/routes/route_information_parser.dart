@@ -46,6 +46,6 @@ class RoutesInformationParser extends RouteInformationParser<RoutePath> {
       return RouteInformation(location: '/$path');
     }
 
-    return const RouteInformation(location: null);
+    return const RouteInformation(location: "/");
   }
 }

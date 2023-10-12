@@ -16,8 +16,8 @@ List<SubNavigationRoutes> routeList = [
 ];
 
 List<SubNavigationRoutes> tripRouteList = [
-  SubNavigationRoutes(title: "Trip", icon: Icons.more, route: RouteData.trip),
-  SubNavigationRoutes(title: "Trip1", icon: Icons.home, route: RouteData.trip1),
-  SubNavigationRoutes(title: "Trip2", icon: Icons.person, route: RouteData.trip2),
-  SubNavigationRoutes(title: "Trip3", icon: Icons.settings, route: RouteData.trip3),
+  SubNavigationRoutes(title: "trip_start", icon: Icons.directions_bus_sharp, route: RouteData.trip_start),
+  SubNavigationRoutes(title: "trip_end", icon: Icons.directions_bus_sharp, route: RouteData.trip_end),
+  SubNavigationRoutes(title: "trip_on", icon: Icons.directions_bus_sharp, route: RouteData.trip_on),
+  SubNavigationRoutes(title: "trips", icon: Icons.directions_bus_sharp, route: RouteData.trips),
 ];

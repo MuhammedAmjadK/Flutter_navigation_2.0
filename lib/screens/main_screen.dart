@@ -41,6 +41,20 @@ class _MainScreenState extends State<MainScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
+              onTap: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary(""));
+              },
+              child: const Center(
+                child: Text(
+                  'Settings',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
               onTap: () => _logOut(),
               child: const Center(
                 child: Text(

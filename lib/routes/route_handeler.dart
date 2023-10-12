@@ -18,10 +18,10 @@ enum RouteData {
   home,
   more,
   settings,
-  trip,
-  trip1,
-  trip2,
-  trip3,
+  trip_start,
+  trip_end,
+  trip_on,
+  trips,
 }
 
 /// Class to handle route path related informations
@@ -57,7 +57,7 @@ class RouteHandeler {
           switch (routeData) {
             case RouteData.home:
               return Home(
-                routeName: routeName,
+                routeName: routeName, id: 20,
               );
 
             case RouteData.profile:
@@ -75,18 +75,18 @@ class RouteHandeler {
                 routeName: routeName,
               );
 
-            case RouteData.trip:
-              return TripHome(routeName: routeName);
-            case RouteData.trip1:
+            case RouteData.trip_start:
+              return TripHome(routeName: routeName,id:21,);
+            case RouteData.trip_end:
               return Trip1(routeName: routeName);
-            case RouteData.trip2:
+            case RouteData.trip_on:
               return Trip2(routeName: routeName);
-            case RouteData.trip3:
+            case RouteData.trips:
               return Trip3(routeName: routeName);
 
             default:
               return Home(
-                routeName: routeName,
+                routeName: routeName, id: 23,
               );
           }
         } else {
@@ -94,7 +94,7 @@ class RouteHandeler {
         }
       } else {
         return Home(
-          routeName: routeName,
+          routeName: routeName, id: 24,
         );
       }
     } else {

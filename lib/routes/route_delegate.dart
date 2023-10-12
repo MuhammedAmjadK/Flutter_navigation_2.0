@@ -49,7 +49,7 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
           MaterialPage(
             key: const ValueKey('trip'),
             child: TripScreen(
-              routeName: pathName ?? RouteData.trip.name,
+              routeName: pathName ?? RouteData.trip_start.name,
             ),
           )
       ];
