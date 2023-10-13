@@ -42,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("settings"));
+                AppRouterDelegate().setPathName(RoutePath.otherPage("settings"));
               },
               child: const Center(
                 child: Text(
