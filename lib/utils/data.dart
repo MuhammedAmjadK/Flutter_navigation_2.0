@@ -16,13 +16,13 @@ List<SubNavigationRoutes> routeList = [
 ];
 
 List<SubNavigationRoutes> tripRouteList = [
-  SubNavigationRoutes(title: "trip_start", icon: Icons.directions_bus_sharp, route: RouteData.trip_start),
-  SubNavigationRoutes(title: "trip_end", icon: Icons.directions_bus_sharp, route: RouteData.trip_end),
-  SubNavigationRoutes(title: "trip_on", icon: Icons.directions_bus_sharp, route: RouteData.trip_on),
-  SubNavigationRoutes(title: "trips", icon: Icons.directions_bus_sharp, route: RouteData.trips),
+  SubNavigationRoutes(title: "driver", icon: Icons.drive_eta_rounded, route: RouteData.driver),
+  SubNavigationRoutes(title: "payment", icon: Icons.payment_sharp, route: RouteData.payment),
+  // SubNavigationRoutes(title: "trip_on", icon: Icons.directions_bus_sharp, route: RouteData.trip_on),
+  // SubNavigationRoutes(title: "trips", icon: Icons.directions_bus_sharp, route: RouteData.trips),
 ];
 
 List<SubNavigationRoutes> settingsRouteList = [
-  SubNavigationRoutes(title: "price", icon: Icons.directions_bus_sharp, route: RouteData.price),
-  SubNavigationRoutes(title: "category", icon: Icons.directions_bus_sharp, route: RouteData.category),
+  SubNavigationRoutes(title: "price", icon: Icons.money, route: RouteData.price),
+  SubNavigationRoutes(title: "category", icon: Icons.list_alt, route: RouteData.category),
 ];

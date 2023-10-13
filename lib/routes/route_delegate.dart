@@ -47,10 +47,10 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
           ),
         ),
         if ((pathName ?? "").contains("trip"))
-          MaterialPage(
+           MaterialPage(
             key: const ValueKey('trip'),
             child: TripScreen(
-              routeName: pathName ?? RouteData.trip_start.name,
+              routeName: pathName ?? RouteData.trip.name,
             ),
           ),
         if ((pathName ?? "").contains("settings"))
@@ -104,7 +104,7 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
     );
   }
 
-  /// setNewRoutePath is called when a new route has been pushed to the application.
+  /// setNewRoutePath is called when a new r te has been pushed to the application.
   @override
   Future<void> setNewRoutePath(RoutePath configuration) async {
     bool isLoggedIn = await HiveDataStorageService.getUser();

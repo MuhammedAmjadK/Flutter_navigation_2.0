@@ -90,7 +90,11 @@ class _MainScreenState extends State<TripScreen> {
 
 class TripHome extends StatelessWidget {
   final String routeName;
-  const TripHome({Key? key, required this.routeName}) : super(key: key);
+
+  const TripHome({
+    Key? key,
+    required this.routeName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -98,20 +102,22 @@ class TripHome extends StatelessWidget {
   }
 }
 
-// Widget getTab(String routeName) {
-//   switch (routeName) {
-//     case "trip":
-//       return const TripTab();
-//     case "tab1":
-//       return const Tab1();
-//     case "tab2":
-//       return const Tab2();
-//     case "detail":
-//       return const DetailTab();
-//     default:
-//       return const TripTab();
-//   }
-// }
+Widget getTab(String routeName) {
+  switch (routeName) {
+    case "home":
+      return const HomeTab();
+    case "create":
+      return const Create();
+  // case "$id":
+  //   return const View();
+    case "edit":
+      return const Edit();
+    case "detail":
+      return const DetailTab();
+    default:
+      return View(id: routeName);
+  }
+}
 
 class TripTab extends StatelessWidget {
   const TripTab({Key? key}) : super(key: key);
@@ -145,7 +151,88 @@ class TripTab extends StatelessWidget {
     );
   }
 }
+class Create extends StatelessWidget {
+  const Create({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.red,
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // ElevatedButton(
+          //     onPressed: (){
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("view"));
+          //     },
+          //     child: const Text("view")),
+          SizedBox(height: 20),
+          Text(
+            "create",
+            style: TextStyle(color: Colors.white, fontSize: 40),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class View extends StatelessWidget {
+  const View({Key? key, required this.id}) : super(key: key);
+
+  final String id;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.grey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("view"));
+              },
+              child: const Text("view")),
+          const SizedBox(height: 20),
+          Text(
+            id,
+            style: const TextStyle(color: Colors.white, fontSize: 40),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Edit extends StatelessWidget {
+  const Edit({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.yellow,
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // ElevatedButton(
+          //     onPressed: () {
+          //       // AppRouterDelegate().setPathName(RoutePath.secondary("edit"));
+          //     },
+          //     child: const Text("Edit")),
+          SizedBox(height: 20),
+          Text(
+            "edit",
+            style: TextStyle(color: Colors.black, fontSize: 40),
+          ),
+        ],
+      ),
+    );
+  }
+}
 class Trip1 extends StatelessWidget {
   final String routeName;
   const Trip1({

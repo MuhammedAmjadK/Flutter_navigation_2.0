@@ -40,7 +40,7 @@ class HomeTab extends StatelessWidget {
 
   final String id1 = "21";
   final String id2 = "22";
-  final String id3 = "23";
+  final String id3 = "149";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,23 +59,23 @@ class HomeTab extends StatelessWidget {
               onPressed: () {
                 AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id1"));
               },
-              child: Text("View $id1")),
+              child: Text("View ")),
           const SizedBox(height: 20),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id2"));
+          //     },
+          //     child: Text("View $id2")),
+          // const SizedBox(height: 20),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id3"));
+          //     },
+          //     child: Text("View $id3")),
+          const SizedBox(height: 10),
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id2"));
-              },
-              child: Text("View $id2")),
-          const SizedBox(height: 20),
-          ElevatedButton(
-              onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id3"));
-              },
-              child: Text("View $id3")),
-          const SizedBox(height: 20),
-          ElevatedButton(
-              onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("menu/edit"));
+                AppRouterDelegate().setPathName(RoutePath.secondary("menu/edit/$id3"));
               },
               child: const Text("edit")),
           const SizedBox(height: 20),

@@ -87,24 +87,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 }
-// Widget getTab(String routeName) {
-//   switch (routeName) {
-//     case "trip":
-//       return const TripTab();
-//     case "tab1":
-//       return const Tab1();
-//     case "tab2":
-//       return const Tab2();
-//     case "detail":
-//       return const DetailTab();
-//     default:
-//       return const TripTab();
-//   }
-// }
+Widget getTab(String routeName) {
+  switch (routeName) {
+    case "settings":
+      return const Price(routeName: '/',);
+    case "create":
+      return const Create();
+  // case "$id":
+  //   return const View();
+    case "edit":
+      return const Edit();
+    case "detail":
+      return const DetailTab();
+    default:
+      return View(id: routeName);
+  }
+}
 
-// class TripTab extends StatelessWidget {
-//   const TripTab({Key? key}) : super(key: key);
-
+// class SettingsTab extends StatelessWidget {
+//   const SettingsTab({Key? key}) : super(key: key);
+//   final String id1 = "21";
+//   final String id2 = "22";
+//   final String id3 = "149";
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(
@@ -141,15 +145,52 @@ class Price extends StatelessWidget {
     Key? key,
     required this.routeName,
   }) : super(key: key);
-
+  final String id1 = "21";
+  final String id2 = "45";
+  final String id3 = "149";
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        getRouteParams(routeName).length > 1
-            ? "Settings Screen with param ${getRouteParams(routeName)[1]}"
-            : "Settings Screen",
-        style: const TextStyle(color: Colors.blue, fontSize: 16),
+    return  Container(
+      alignment: Alignment.center,
+      color: Colors.pinkAccent,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("create"));
+              },
+              child: const Text("create")),
+          const SizedBox(height: 20),
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("$id2"));
+              },
+              child: Text("View ")),
+          const SizedBox(height: 20),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id2"));
+          //     },
+          //     child: Text("View $id2")),
+          // const SizedBox(height: 20),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id3"));
+          //     },
+          //     child: Text("View $id3")),
+          const SizedBox(height: 10),
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("edit"));
+              },
+              child: const Text("edit")),
+          const SizedBox(height: 20),
+          const Text(
+            "Price Screen",
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ],
       ),
     );
   }
@@ -161,15 +202,134 @@ class Category extends StatelessWidget {
     Key? key,
     required this.routeName,
   }) : super(key: key);
+  final String id1 = "21";
+  final String id2 = "45";
+  final String id3 = "149";
+  @override
+  Widget build(BuildContext context) {
+    return  Container(
+      alignment: Alignment.center,
+      color: Colors.orange,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("create"));
+              },
+              child: const Text("create")),
+          const SizedBox(height: 20),
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("$id1"));
+              },
+              child: Text("View ")),
+          const SizedBox(height: 20),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id2"));
+          //     },
+          //     child: Text("View $id2")),
+          // const SizedBox(height: 20),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id3"));
+          //     },
+          //     child: Text("View $id3")),
+          const SizedBox(height: 10),
+          ElevatedButton(
+              onPressed: () {
+                AppRouterDelegate().setPathName(RoutePath.secondary("edit"));
+              },
+              child: const Text("edit")),
+          const SizedBox(height: 20),
+          const Text(
+            "Payment Screen",
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class Create extends StatelessWidget {
+  const Create({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        getRouteParams(routeName).length > 1
-            ? "Category Screen with param ${getRouteParams(routeName)[1]}"
-            : "Category Screen",
-        style: const TextStyle(color: Colors.blue, fontSize: 16),
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.red,
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("create"));
+          //     },
+          //     child: const Text("create")),
+          SizedBox(height: 20),
+          Text(
+            "create",
+            style: TextStyle(color: Colors.white, fontSize: 40),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class View extends StatelessWidget {
+  const View({Key? key, required this.id}) : super(key: key);
+
+  final String id;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.grey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // ElevatedButton(
+          //     onPressed: () {
+          //       AppRouterDelegate().setPathName(RoutePath.secondary("view"));
+          //     },
+          //     child: const Text("view")),
+          const SizedBox(height: 20),
+          Text(
+            id,
+            style: const TextStyle(color: Colors.white, fontSize: 40),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Edit extends StatelessWidget {
+  const Edit({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.yellow,
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // ElevatedButton(
+          //     onPressed: () {
+          //       // AppRouterDelegate().setPathName(RoutePath.secondary("edit"));
+          //     },
+          //     child: const Text("Edit")),
+          SizedBox(height: 20),
+          Text(
+            "edit",
+            style: TextStyle(color: Colors.black, fontSize: 40),
+          ),
+        ],
       ),
     );
   }

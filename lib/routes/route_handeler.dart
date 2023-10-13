@@ -19,11 +19,12 @@ enum RouteData {
   login,
   home,
   more,
+  trip,
   settings,
-  trip_start,
-  trip_end,
-  trip_on,
-  trips,
+  driver,
+  payment,
+  // trip_on,
+  // trips,
   price,
   category,
 }
@@ -73,16 +74,16 @@ class RouteHandeler {
                 routeName: routeName,
               );
 
-            case RouteData.trip_start:
+            case RouteData.driver:
               return TripHome(
                 routeName: routeName,
               );
-            case RouteData.trip_end:
+            case RouteData.payment:
               return Trip1(routeName: routeName);
-            case RouteData.trip_on:
-              return Trip2(routeName: routeName);
-            case RouteData.trips:
-              return Trip3(routeName: routeName);
+            // case RouteData.trip_on:
+            //   return Trip2(routeName: routeName);
+            // case RouteData.trips:
+            //   return Trip3(routeName: routeName);
             case RouteData.price:
               return Price(routeName: routeName);
 
