@@ -114,9 +114,7 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
     pathName = configuration.pathName;
 
     if (configuration.isSecondaryPath) {
-      if (RouteData.values.any((element) {
-        return element.name == pathName;
-      })) {
+      if (RouteData.values.any((element) => element.name == pathName)) {
         String removedPath = previousPath;
 
         if (previousPath.split("/").length > 1) {
@@ -148,12 +146,17 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
           if (configuration.pathName == RouteData.login.name) {
             pathName = RouteData.home.name;
             isError = false;
-          }
-          if (previousPath.split("/").first == RouteData.settings.name &&
+          } else if (previousPath.split("/").first == RouteData.settings.name &&
               pathName?.split("/").last != RouteData.settings.name &&
               pathName?.split("/").last != RouteData.home.name &&
               settingsRouteList.any((element) => element.route.name == pathName?.split("/").last)) {
             pathName = RouteData.settings.name + "/" + (pathName?.split("/").last ?? "");
+            isError = false;
+          } else if (previousPath.split("/").any((element) => element == RouteData.trip.name) &&
+              pathName?.split("/").last != RouteData.trip.name &&
+              pathName?.split("/").last != RouteData.home.name &&
+              tripRouteList.any((element) => element.route.name == pathName?.split("/").last)) {
+            pathName = previousPath.split("trip").first + RouteData.trip.name + "/" + (pathName?.split("/").last ?? "");
             isError = false;
           } else {
             pathName = configuration.pathName != RouteData.login.name ? configuration.pathName : RouteData.home.name;

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../core.dart';
+import '../routes/route_delegate.dart';
+import '../routes/route_path.dart';
+import '../services/split_route_params.dart';
 import 'settings_screen.dart';
 
-class Price extends StatelessWidget {
+class Payment extends StatelessWidget {
   final String routeName;
 
-  const Price({
+  const Payment({
     Key? key,
     required this.routeName,
   }) : super(key: key);
@@ -19,10 +21,12 @@ class Price extends StatelessWidget {
 
 Widget getTab(String routeName) {
   switch (routeName) {
-    case "price":
-      return const PriceTab();
+    case "payment":
+      return const CategoryTab();
     case "create":
       return const Create();
+    // case "$id":
+    //   return const View();
     case "edit":
       return const Edit();
     case "detail":
@@ -32,8 +36,8 @@ Widget getTab(String routeName) {
   }
 }
 
-class PriceTab extends StatelessWidget {
-  const PriceTab({
+class CategoryTab extends StatelessWidget {
+  const CategoryTab({
     Key? key,
   }) : super(key: key);
   final String id1 = "21";
@@ -43,7 +47,7 @@ class PriceTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      color: Colors.pinkAccent,
+      color: Colors.orange,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -55,18 +59,18 @@ class PriceTab extends StatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary(id2));
+                AppRouterDelegate().setPathName(RoutePath.secondary(id1));
               },
               child: const Text("View ")),
           const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("edit/$id2"));
+                AppRouterDelegate().setPathName(RoutePath.secondary("edit/$id1"));
               },
               child: const Text("edit")),
           const SizedBox(height: 20),
           const Text(
-            "Price Screen",
+            "Payment Screen",
             style: TextStyle(color: Colors.white, fontSize: 16),
           ),
         ],

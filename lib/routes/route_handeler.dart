@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_navigation/screens/category_screen.dart';
+import 'package:flutter_web_navigation/screens/driver_screen.dart';
 import 'package:flutter_web_navigation/screens/home_screen.dart';
 import 'package:flutter_web_navigation/screens/more.dart';
 import 'package:flutter_web_navigation/screens/new_page.dart';
+import 'package:flutter_web_navigation/screens/payment_screen.dart';
 import 'package:flutter_web_navigation/screens/profile_screen.dart';
 import 'package:flutter_web_navigation/screens/unknown.dart';
 
@@ -70,11 +72,11 @@ class RouteHandeler {
               );
 
             case RouteData.driver:
-              return TripHome(
+              return Driver(
                 routeName: routeName,
               );
             case RouteData.payment:
-              return Trip1(routeName: routeName);
+              return Payment(routeName: routeName);
             // case RouteData.trip_on:
             //   return Trip2(routeName: routeName);
             // case RouteData.trips:

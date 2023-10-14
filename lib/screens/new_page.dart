@@ -18,10 +18,10 @@ class TripScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<TripScreen> createState() => _MainScreenState();
+  State<TripScreen> createState() => _TripScreenState();
 }
 
-class _MainScreenState extends State<TripScreen> {
+class _TripScreenState extends State<TripScreen> {
   Widget? render;
 
   @override
@@ -82,7 +82,7 @@ class _MainScreenState extends State<TripScreen> {
         ),
       ),
       onTap: () {
-        AppRouterDelegate().setPathName(RoutePath.secondary(route.route.name));
+        AppRouterDelegate().setPathName(RoutePath.otherPage(route.route.name));
       },
     );
   }
@@ -108,8 +108,8 @@ Widget getTab(String routeName) {
       return const HomeTab();
     case "create":
       return const Create();
-  // case "$id":
-  //   return const View();
+    // case "$id":
+    //   return const View();
     case "edit":
       return const Edit();
     case "detail":
@@ -151,6 +151,7 @@ class TripTab extends StatelessWidget {
     );
   }
 }
+
 class Create extends StatelessWidget {
   const Create({Key? key}) : super(key: key);
 
@@ -233,6 +234,7 @@ class Edit extends StatelessWidget {
     );
   }
 }
+
 class Trip1 extends StatelessWidget {
   final String routeName;
   const Trip1({

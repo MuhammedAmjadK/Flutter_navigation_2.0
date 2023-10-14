@@ -59,25 +59,13 @@ class CategoryTab extends StatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("$id1"));
+                AppRouterDelegate().setPathName(RoutePath.secondary(id1));
               },
-              child: Text("View ")),
+              child: const Text("View ")),
           const SizedBox(height: 20),
-          // ElevatedButton(
-          //     onPressed: () {
-          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id2"));
-          //     },
-          //     child: Text("View $id2")),
-          // const SizedBox(height: 20),
-          // ElevatedButton(
-          //     onPressed: () {
-          //       AppRouterDelegate().setPathName(RoutePath.secondary("menu/$id3"));
-          //     },
-          //     child: Text("View $id3")),
-          const SizedBox(height: 10),
           ElevatedButton(
               onPressed: () {
-                AppRouterDelegate().setPathName(RoutePath.secondary("edit"));
+                AppRouterDelegate().setPathName(RoutePath.secondary("edit/$id1"));
               },
               child: const Text("edit")),
           const SizedBox(height: 20),
