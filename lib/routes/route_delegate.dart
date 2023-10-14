@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_navigation/screens/new_page.dart';
-import 'package:flutter_web_navigation/screens/settings.dart';
 import 'package:flutter_web_navigation/services/hive_storage_service.dart';
 import '../core.dart';
+import '../screens/settings_screen.dart';
 
 /// AppRouterDelegate includes the parsed result from RoutesInformationParser
 class AppRouterDelegate extends RouterDelegate<RoutePath>
@@ -47,7 +47,7 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
           ),
         ),
         if ((pathName ?? "").contains("trip"))
-           MaterialPage(
+          MaterialPage(
             key: const ValueKey('trip'),
             child: TripScreen(
               routeName: pathName ?? RouteData.trip.name,
@@ -147,6 +147,13 @@ class AppRouterDelegate extends RouterDelegate<RoutePath>
           /// If logged in
           if (configuration.pathName == RouteData.login.name) {
             pathName = RouteData.home.name;
+            isError = false;
+          }
+          if (previousPath.split("/").first == RouteData.settings.name &&
+              pathName?.split("/").last != RouteData.settings.name &&
+              pathName?.split("/").last != RouteData.home.name &&
+              settingsRouteList.any((element) => element.route.name == pathName?.split("/").last)) {
+            pathName = RouteData.settings.name + "/" + (pathName?.split("/").last ?? "");
             isError = false;
           } else {
             pathName = configuration.pathName != RouteData.login.name ? configuration.pathName : RouteData.home.name;

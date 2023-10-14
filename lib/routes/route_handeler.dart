@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_navigation/screens/category_screen.dart';
 import 'package:flutter_web_navigation/screens/home_screen.dart';
 import 'package:flutter_web_navigation/screens/more.dart';
 import 'package:flutter_web_navigation/screens/new_page.dart';
 import 'package:flutter_web_navigation/screens/profile_screen.dart';
-import 'package:flutter_web_navigation/screens/settings_screen.dart';
 import 'package:flutter_web_navigation/screens/unknown.dart';
 
-import '../screens/settings.dart';
+import '../screens/price.dart';
 
 enum RouteData {
   /// For routes for which we want to show unkown page that are not being parsed
@@ -61,11 +61,6 @@ class RouteHandeler {
 
             case RouteData.profile:
               return Profile(
-                routeName: routeName,
-              );
-
-            case RouteData.settings:
-              return Settings(
                 routeName: routeName,
               );
 

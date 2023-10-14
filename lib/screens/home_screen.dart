@@ -22,8 +22,7 @@ Widget getTab(String routeName) {
       return const HomeTab();
     case "create":
       return const Create();
-    // case "$id":
-    //   return const View();
+
     case "edit":
       return const Edit();
     case "detail":
